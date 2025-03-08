@@ -54,11 +54,15 @@ struct SignatureEditorView: View {
                         Label("Prévisualisation", systemImage: "eye")
                     }
                     
-                    // Onglet Texte Riche (placeholder)
-                    VStack {
-                        RichTextToolbar()
-                        
-                        RichTextEditor(attributedText: $localAttributedText)
+                    // Onglet Texte Riche (utilisant TinyMCEAttributedEditorView)
+                    TinyMCEAttributedEditorView(attributedText: $localAttributedText, onSave: {
+                        // Mise à jour et sauvegarde de la signature
+                        viewModel.updateSignature(id: signature.id, content: localAttributedText, htmlContent: localHtmlContent)
+                        viewModel.saveSignature(id: signature.id)
+                        isDirty = false
+                    })
+                    .onChange(of: localAttributedText) { _, _ in
+                        isDirty = true
                     }
                     .padding()
                     .tabItem {

@@ -230,4 +230,22 @@ extension HtmlEditor {
             }
         }
     }
+}
+
+// Vue d'éditeur HTML basée sur CodeMirror
+struct CodeMirrorEditorView: View {
+    @Binding var htmlContent: String
+    var onSave: (() -> Void)?
+
+    var body: some View {
+        VStack {
+            HtmlEditor(htmlContent: $htmlContent)
+            
+            if let saveAction = onSave {
+                Button("Sauvegarder", action: saveAction)
+                    .padding()
+                    .buttonStyle(.borderedProminent)
+            }
+        }
+    }
 } 

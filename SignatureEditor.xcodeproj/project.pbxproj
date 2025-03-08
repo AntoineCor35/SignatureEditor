@@ -13,6 +13,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1BE2A5B52D7B24E30036F834 /* SignatureEditor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFolders = (
+				Resources/tinymce,
+			);
 			path = SignatureEditor;
 			sourceTree = "<group>";
 		};
