@@ -54,14 +54,18 @@ struct SignatureEditorView: View {
                         Label("Prévisualisation", systemImage: "eye")
                     }
                     
-                    // Onglet Texte Riche (utilisant TinyMCEAttributedEditorView)
-                    TinyMCEAttributedEditorView(attributedText: $localAttributedText, onSave: {
+                    // Onglet Éditeur Riche (utilisant notre nouveau InfomaniakRichEditorView)
+                    InfomaniakRichEditorView(htmlContent: $localHtmlContent, onSave: {
                         // Mise à jour et sauvegarde de la signature
                         viewModel.updateSignature(id: signature.id, content: localAttributedText, htmlContent: localHtmlContent)
                         viewModel.saveSignature(id: signature.id)
                         isDirty = false
                     })
-                    .onChange(of: localAttributedText) { _, _ in
+                    .onChange(of: localHtmlContent) { _, _ in
+                        // Convertir HTML en NSAttributedString pour maintenir la compatibilité
+                        if let attributedString = htmlToAttributedString(localHtmlContent) {
+                            localAttributedText = attributedString
+                        }
                         isDirty = true
                     }
                     .padding()
@@ -199,5 +203,20 @@ struct SignatureEditorView: View {
         }
         
         return nil
+    }
+    
+    // Convertir du HTML en NSAttributedString
+    private func htmlToAttributedString(_ html: String) -> NSAttributedString? {
+        guard let data = html.data(using: .utf8) else { return nil }
+        
+        do {
+            return try NSAttributedString(data: data,
+                                         options: [.documentType: NSAttributedString.DocumentType.html,
+                                                   .characterEncoding: String.Encoding.utf8.rawValue],
+                                         documentAttributes: nil)
+        } catch {
+            print("Erreur de conversion HTML → NSAttributedString: \(error)")
+            return nil
+        }
     }
 } 

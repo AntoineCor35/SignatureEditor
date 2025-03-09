@@ -334,8 +334,7 @@ struct RichTextEditor: NSViewRepresentable {
                     // Configuration de TinyMCE avec des plugins de base
                     tinymce.init({
                         selector: '#editor',
-                        // Plugins disponibles dans la version communautaire
-                        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                        plugins: 'inlinecss',
                         // Barre d'outils personnalisée pour l'éditeur de signature
                         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | ' + 
                                  'link image media table | align lineheight | bullist numlist | ' + 
@@ -344,7 +343,6 @@ struct RichTextEditor: NSViewRepresentable {
                         statusbar: false,
                         height: '100%',
                         width: '100%',
-                        content_css: 'default',
                         branding: false,
                         resize: false,
                         elementpath: false,

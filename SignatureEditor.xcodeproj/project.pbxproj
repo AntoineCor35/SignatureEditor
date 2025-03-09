@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1B2646202D7E50380027B67B /* InfomaniakRichHTMLEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 1B26461F2D7E50380027B67B /* InfomaniakRichHTMLEditor */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1BE2A5B32D7B24E30036F834 /* SignatureEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignatureEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -26,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2646202D7E50380027B67B /* InfomaniakRichHTMLEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,7 @@
 			);
 			name = SignatureEditor;
 			packageProductDependencies = (
+				1B26461F2D7E50380027B67B /* InfomaniakRichHTMLEditor */,
 			);
 			productName = SignatureEditor;
 			productReference = 1BE2A5B32D7B24E30036F834 /* SignatureEditor.app */;
@@ -97,6 +103,9 @@
 			);
 			mainGroup = 1BE2A5AA2D7B24E30036F834;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1B26461E2D7E50380027B67B /* XCLocalSwiftPackageReference "../swift-rich-html-editor-main" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1BE2A5B42D7B24E30036F834 /* Products */;
 			projectDirPath = "";
@@ -340,6 +349,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		1B26461E2D7E50380027B67B /* XCLocalSwiftPackageReference "../swift-rich-html-editor-main" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../swift-rich-html-editor-main";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B26461F2D7E50380027B67B /* InfomaniakRichHTMLEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = InfomaniakRichHTMLEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1BE2A5AB2D7B24E30036F834 /* Project object */;
 }
